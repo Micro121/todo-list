@@ -1,16 +1,16 @@
 // selectors
-
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const filterOption = document.querySelector('.filter-todo');
 
-// event listeners
-
+//event listener
 document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
+
+//functions
 
 function addTodo(event) {
   // prevent form from submitting
@@ -85,6 +85,8 @@ function filterTodo(e) {
     }
   });
 }
+
+// this function saves stuff to the local storage
 function saveLocalTodos(todo) {
   // check if I already have things in there
   let todos;
@@ -96,6 +98,7 @@ function saveLocalTodos(todo) {
   todos.push(todo);
   localStorage.setItem('todos', JSON.stringify(todos));
 }
+
 function getTodos() {
   let todos;
   if (localStorage.getItem('todos') === null) {
@@ -127,6 +130,7 @@ function getTodos() {
     todoList.appendChild(todoDiv);
   });
 }
+
 function removeLocalTodos(todo) {
   let todos;
   if (localStorage.getItem('todos') === null) {
