@@ -40,3 +40,23 @@ function addTodo(event) {
   // clear to do input value
   todoInput.value = '';
 }
+
+function deleteCheck(e) {
+  const item = e.target;
+  //delete todo
+  if (item.classList[0] === 'trash-btn') {
+    const todo = item.parentElement;
+    // animation on delete
+    todo.classList.add('fall');
+    removeLocalTodos(todo);
+    todo.addEventListener('transitionend', function () {
+      todo.remove();
+    });
+  }
+
+  // check mark
+  if (item.classList[0] === 'completed-btn') {
+    const todo = item.parentElement;
+    todo.classList.toggle('completed');
+  }
+}
